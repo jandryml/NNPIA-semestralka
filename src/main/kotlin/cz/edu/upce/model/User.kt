@@ -20,7 +20,7 @@ class User(
     var password: @NotBlank @Size(max = 120) String = "",
 
     //TODO recheck
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles")
     var roles: Set<Role> = HashSet()
 )

@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.stream.Collectors
 
-class UserDetailsImpl(
+data class UserDetailsImpl(
     val id: Long,
     private val username: String,
     val email: String,
@@ -15,33 +15,19 @@ class UserDetailsImpl(
     private val authorities: Collection<GrantedAuthority>
 ) : UserDetails {
 
-    override fun getAuthorities(): Collection<GrantedAuthority> {
-        return authorities
-    }
+    override fun getAuthorities() = authorities
 
-    override fun getPassword(): String {
-        return password
-    }
+    override fun getPassword() = password
 
-    override fun getUsername(): String {
-        return username
-    }
+    override fun getUsername() = username
 
-    override fun isAccountNonExpired(): Boolean {
-        return true
-    }
+    override fun isAccountNonExpired() = true
 
-    override fun isAccountNonLocked(): Boolean {
-        return true
-    }
+    override fun isAccountNonLocked() = true
 
-    override fun isCredentialsNonExpired(): Boolean {
-        return true
-    }
+    override fun isCredentialsNonExpired() = true
 
-    override fun isEnabled(): Boolean {
-        return true
-    }
+    override fun isEnabled() = true
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

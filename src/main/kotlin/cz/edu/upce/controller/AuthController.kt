@@ -64,6 +64,9 @@ class AuthController {
         )
     }
 
+    fun solution(products: List<String>, product: String) =
+        products.forEachIndexed { index, s -> if (product == s) print("$index ") }
+
     @PostMapping("/signup")
     fun registerUser(@RequestBody signUpRequest: @Valid SignupRequest): ResponseEntity<*> {
         if (userRepository.existsByUsername(signUpRequest.username)) {

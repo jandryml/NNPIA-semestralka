@@ -17,14 +17,14 @@ repositories {
     mavenCentral()
 }
 
-val jar: Jar by tasks
-val bootJar : BootJar by tasks
-configurations {
-    listOf(apiElements, runtimeElements).forEach { ndop ->
-        ndop.get().outgoing.artifacts.removeIf { it.buildDependencies.getDependencies(null).contains(jar) }
-        ndop.get().outgoing.artifact(bootJar)
-    }
-}
+//val jar: Jar by tasks
+//val bootJar : BootJar by tasks
+//configurations {
+//    listOf(apiElements, runtimeElements).forEach { ndop ->
+//        ndop.get().outgoing.artifacts.removeIf { it.buildDependencies.getDependencies(null).contains(jar) }
+//        ndop.get().outgoing.artifact(bootJar)
+//    }
+//}
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -45,44 +45,44 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
 }
-
-tasks.register<NpmTask>("appNpmInstall") {
-    description = "Installs all dependencies from package.json"
-    workingDir = file("${project.projectDir}/src/main/webapp")
-    args = listOf("install")
-}
-
-
-tasks.register<NpmTask>("appNpmBuild") {
-    dependsOn("appNpmInstall")
-    description = "Builds project"
-    workingDir = file("${project.projectDir}/src/main/webapp")
-    args = listOf("run", "build")
-}
-
-tasks.register<Copy>("copyWebApp") {
-    dependsOn("appNpmBuild")
-    description = "Copies built project to where it will be served"
-    from("src/main/webapp/build")
-    into("build/resources/main/static/.")
-}
-
-node {
-    download = true
-    version = "12.13.1"
-    npmVersion = "6.12.1"
-    // Set the work directory for unpacking node
-    workDir = file("${project.buildDir}/nodejs")
-    // Set the work directory for NPM
-    npmWorkDir = file("${project.buildDir}/npm")
-}
+//
+//tasks.register<NpmTask>("appNpmInstall") {
+//    description = "Installs all dependencies from package.json"
+//    workingDir = file("${project.projectDir}/src/main/webapp")
+//    args = listOf("install")
+//}
+//
+//
+//tasks.register<NpmTask>("appNpmBuild") {
+//    dependsOn("appNpmInstall")
+//    description = "Builds project"
+//    workingDir = file("${project.projectDir}/src/main/webapp")
+//    args = listOf("run", "build")
+//}
+//
+//tasks.register<Copy>("copyWebApp") {
+//    dependsOn("appNpmBuild")
+//    description = "Copies built project to where it will be served"
+//    from("src/main/webapp/build")
+//    into("build/resources/main/static/.")
+//}
+//
+//node {
+//    download = true
+//    version = "12.13.1"
+//    npmVersion = "6.12.1"
+//    // Set the work directory for unpacking node
+//    workDir = file("${project.buildDir}/nodejs")
+//    // Set the work directory for NPM
+//    npmWorkDir = file("${project.buildDir}/npm")
+//}
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
-    dependsOn("copyWebApp")
+//    dependsOn("copyWebApp")
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"

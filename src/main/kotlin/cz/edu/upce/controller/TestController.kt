@@ -22,7 +22,7 @@ class TestController {
     }
 
     @GetMapping("/mod")
-    @PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MODER   ATOR')")
     fun moderatorAccess(): String {
         return "Moderator Board."
     }
