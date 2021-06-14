@@ -1,9 +1,9 @@
 package cz.edu.upce.controller
 
-import cz.edu.upce.dto.request.LoginRequest
-import cz.edu.upce.dto.request.SignupRequest
-import cz.edu.upce.dto.response.JwtResponse
-import cz.edu.upce.dto.response.MessageResponse
+import cz.edu.upce.dto.LoginRequest
+import cz.edu.upce.dto.SignupRequest
+import cz.edu.upce.dto.JwtResponse
+import cz.edu.upce.dto.MessageResponse
 import cz.edu.upce.model.Role
 import cz.edu.upce.model.RoleType
 import cz.edu.upce.model.User

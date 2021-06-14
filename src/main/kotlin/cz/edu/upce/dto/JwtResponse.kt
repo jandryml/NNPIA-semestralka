@@ -1,4 +1,4 @@
-package cz.edu.upce.dto.response
+package cz.edu.upce.dto
 
 
 class JwtResponse(
