@@ -9,7 +9,7 @@ data class FilmDto(
     var durationMinute: Int?,
     var language: String?
 ) {
-    fun transferToModel(): Film {
+    fun toModel(): Film {
         return Film(
             id,
             name ?: "",

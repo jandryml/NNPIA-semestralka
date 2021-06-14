@@ -1,10 +1,10 @@
 package cz.edu.upce.service
 
-import cz.edu.upce.dto.FilmDto
+import cz.edu.upce.model.Film
 
 interface IFilmService {
-    fun getAll(): List<FilmDto>
-    fun getById(id: Long): FilmDto
-    fun add(filmDto: FilmDto): FilmDto
+    fun getAll(): List<Film>
+    fun getById(id: Long): Film
+    fun add(film: Film): Film
     fun removeById(filmId: Long)
 }
