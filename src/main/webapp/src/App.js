@@ -11,6 +11,8 @@ import BoardUser from "./components/general/BoardUser";
 import BoardModerator from "./components/general/BoardModerator";
 import BoardAdmin from "./components/general/BoardAdmin";
 import Navbar from "./components/general/Navbar";
+import FilmView from "./components/film/FilmView";
+import FilmDetail from "./components/film/detail/FilmDetail";
 
 const App = () => {
     return (
@@ -23,9 +25,14 @@ const App = () => {
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/profile" component={Profile}/>
-                        <Route path="/user" component={BoardUser}/>
-                        <Route path="/mod" component={BoardModerator}/>
-                        <Route path="/admin" component={BoardAdmin}/>
+
+                        <Route exact path="/film" component={FilmView}/>
+                        <Route exact path="/film/:id" component={FilmDetail}/>
+
+                        <Route exact path="/user" component={BoardUser}/>
+                        <Route exact path="/mod" component={BoardModerator}/>
+                        <Route exact path="/admin" component={BoardAdmin}/>
+                        {/*<Route path="*" component={NotFound}>*/}
                     </Switch>
                 </div>
             </div>

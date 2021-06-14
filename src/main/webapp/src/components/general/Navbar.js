@@ -26,7 +26,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <Link to={"/"} className="navbar-brand">
-                kino testing
+                Cinema testing
             </Link>
             <div className="navbar-nav mr-auto">
                 <li className="nav-item">
@@ -35,29 +35,35 @@ const Navbar = () => {
                     </Link>
                 </li>
 
-                {showAdminBoard && (
-                    <li className="nav-item">
-                        <Link to={"/admin"} className="nav-link">
-                            Admin Board
-                        </Link>
-                    </li>
-                )}
+                <li className="nav-item">
+                    <Link to={"/film"} className="nav-link">
+                        Films
+                    </Link>
+                </li>
 
-                {showModeratorBoard && (
-                    <li className="nav-item">
-                        <Link to={"/mod"} className="nav-link">
-                            Moderator Board
-                        </Link>
-                    </li>
-                )}
+                {/*{showAdminBoard && (*/}
+                {/*    <li className="nav-item">*/}
+                {/*        <Link to={"/admin"} className="nav-link">*/}
+                {/*            Admin Board*/}
+                {/*        </Link>*/}
+                {/*    </li>*/}
+                {/*)}*/}
 
-                {currentUser && (
-                    <li className="nav-item">
-                        <Link to={"/user"} className="nav-link">
-                            User
-                        </Link>
-                    </li>
-                )}
+                {/*{showModeratorBoard && (*/}
+                {/*    <li className="nav-item">*/}
+                {/*        <Link to={"/mod"} className="nav-link">*/}
+                {/*            Moderator Board*/}
+                {/*        </Link>*/}
+                {/*    </li>*/}
+                {/*)}*/}
+
+                {/*{currentUser && (*/}
+                {/*    <li className="nav-item">*/}
+                {/*        <Link to={"/user"} className="nav-link">*/}
+                {/*            User*/}
+                {/*        </Link>*/}
+                {/*    </li>*/}
+                {/*)}*/}
             </div>
 
             {currentUser ? (
