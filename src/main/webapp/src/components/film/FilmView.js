@@ -1,15 +1,9 @@
-import useFetch from "../../services/useFetch";
-import FilmList from "./list/FilmList";
+import FilmListItem from "./FilmListItem";
+import GenericView from "../reusables/GenericView";
 
 const FilmView = () => {
-    const {data: films, isPending, error} = useFetch('http://localhost:8080/api/film');
-
     return (
-        <div className="home">
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
-            {films && <FilmList films={films} title="All Films"/>}
-        </div>
+        <GenericView title="All Films" ListItem={FilmListItem} url={'http://localhost:8080/api/film'}/>
     );
 };
 

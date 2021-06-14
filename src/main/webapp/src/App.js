@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Switch, Route, Link, BrowserRouter} from "react-router-dom";
+import React from "react";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -12,7 +12,7 @@ import BoardModerator from "./components/general/BoardModerator";
 import BoardAdmin from "./components/general/BoardAdmin";
 import Navbar from "./components/general/Navbar";
 import FilmView from "./components/film/FilmView";
-import FilmDetail from "./components/film/detail/FilmDetail";
+import FilmDetail from "./components/film/FilmDetail";
 
 const App = () => {
     return (

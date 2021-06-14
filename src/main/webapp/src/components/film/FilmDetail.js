@@ -1,5 +1,5 @@
 import {useHistory, useParams} from "react-router";
-import useFetch from "../../../services/useFetch";
+import useFetch from "../../services/useFetch";
 
 const FilmDetail = () => {
     const {id} = useParams();
