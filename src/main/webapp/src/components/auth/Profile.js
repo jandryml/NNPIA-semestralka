@@ -7,7 +7,6 @@ const Profile = () => {
 
     useEffect(() => {
         setCurrentUser(AuthService.getCurrentUser());
-        console.log(currentUser);
     }, []);
 
     return (
