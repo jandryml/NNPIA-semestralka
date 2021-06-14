@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class FilmService : IFilmService {
+
     @Autowired
     lateinit var filmRepository: FilmRepository
 
@@ -18,7 +19,7 @@ class FilmService : IFilmService {
         return filmRepository.getOne(id)
     }
 
-    override fun add(film: Film): Film {
+    override fun save(film: Film): Film {
         return filmRepository.save(film)
     }
 

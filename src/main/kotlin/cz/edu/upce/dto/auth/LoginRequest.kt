@@ -1,4 +1,4 @@
-package cz.edu.upce.dto
+package cz.edu.upce.dto.auth
 
 import javax.validation.constraints.NotBlank
 

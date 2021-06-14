@@ -1,7 +1,7 @@
 package cz.edu.upce.controller
 
 import cz.edu.upce.dto.FilmDto
-import cz.edu.upce.service.FilmService
+import cz.edu.upce.service.IFilmService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/film")
 class FilmController {
     @Autowired
-    lateinit var filmService: FilmService
+    lateinit var filmService: IFilmService
 
     @GetMapping
     fun getAll(): List<FilmDto> {
@@ -23,8 +23,8 @@ class FilmController {
     }
 
     @PostMapping
-    fun add(@RequestBody filmDto: FilmDto): FilmDto {
-        val addedFilm = filmService.add(filmDto.toModel())
+    fun save(@RequestBody filmDto: FilmDto): FilmDto {
+        val addedFilm = filmService.save(filmDto.toModel())
         return addedFilm.toDto()
     }
 

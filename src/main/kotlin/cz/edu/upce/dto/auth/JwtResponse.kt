@@ -1,5 +1,4 @@
-package cz.edu.upce.dto
-
+package cz.edu.upce.dto.auth
 
 class JwtResponse(
     var id: Long,

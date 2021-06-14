@@ -1,10 +1,10 @@
 package cz.edu.upce.model
 
+import cz.edu.upce.dto.UserDto
 import javax.persistence.*
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
-
 
 @Entity
 @Table(
@@ -23,4 +23,13 @@ class User(
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles")
     var roles: Set<Role> = HashSet()
-)
+) {
+    fun toDto(): UserDto {
+        return UserDto(
+            this.id!!,
+            this.username,
+            this.email,
+            this.roles.map { it.toString() }
+        )
+    }
+}

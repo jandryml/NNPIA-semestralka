@@ -1,10 +1,15 @@
 package cz.edu.upce.model
 
+import cz.edu.upce.dto.ProgramDto
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.persistence.*
 
 @Entity(name = "program")
 class Program(
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    var id: Long? = null,
     @Column(columnDefinition = "TIMESTAMP") var timeStamp: LocalDateTime = LocalDateTime.now(),
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "hall_id")
@@ -13,7 +18,16 @@ class Program(
     @JoinColumn(name = "film_id")
     val film: Film? = null
 ) {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long = 0
+    companion object {
+        val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    }
+
+    fun toDto(): ProgramDto {
+        return ProgramDto(
+            this.id,
+            this.timeStamp.format(dateTimeFormatter),
+            this.hall?.toDto(),
+            this.film?.toDto()
+        )
+    }
 }

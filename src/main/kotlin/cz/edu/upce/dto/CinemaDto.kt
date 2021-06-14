@@ -1,4 +1,21 @@
 package cz.edu.upce.dto
 
-class CinemaDto {
+import cz.edu.upce.model.Cinema
+
+class CinemaDto(
+    var id: Long?,
+    var name: String?,
+    var address: String?,
+    var telephone: String?,
+    var email: String?
+) {
+    fun toModel(): Cinema {
+        return Cinema(
+            id,
+            name ?: "",
+            address ?: "",
+            telephone ?: "",
+            email ?: ""
+        )
+    }
 }
