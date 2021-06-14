@@ -7,11 +7,7 @@ class TicketDto(
     var user: UserDto?,
     var program: ProgramDto?
 ) {
-    fun toModel(): Ticket {
-        return Ticket(
-            id,
-            user?.toModel() ,
-            program?.toModel()
-        )
-    }
+    fun toModel(): Ticket = Ticket(
+        id, user?.toModel(), program?.toModel()
+    )
 }

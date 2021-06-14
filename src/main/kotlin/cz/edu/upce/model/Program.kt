@@ -19,15 +19,10 @@ class Program(
     val film: Film? = null
 ) {
     companion object {
-        val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
     }
 
-    fun toDto(): ProgramDto {
-        return ProgramDto(
-            this.id,
-            this.timeStamp.format(dateTimeFormatter),
-            this.hall?.toDto(),
-            this.film?.toDto()
-        )
-    }
+    fun toDto(): ProgramDto = ProgramDto(
+        id, timeStamp.format(dateTimeFormatter), hall?.toDto(), film?.toDto()
+    )
 }

@@ -14,28 +14,26 @@ class HallController {
 
     @GetMapping
     fun getAll(): List<HallDto> {
-        val allHalls = hallService.getAll()
-        return allHalls.map { it.toDto() }
+        return hallService.getAll().map { it.toDto() }
     }
 
     @GetMapping(params = ["cinemaId"])
-    fun getAllByCinemaId(@RequestParam cinemaId: String): List<HallDto> {
-        return hallService.getByCinemaId(cinemaId.toLong()).map { it.toDto() }
+    fun getAllByCinemaId(@RequestParam cinemaId: Long): List<HallDto> {
+        return hallService.getByCinemaId(cinemaId).map { it.toDto() }
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String): HallDto {
-        return hallService.getById(id.toLong()).toDto()
+    fun detail(@PathVariable id: Long): HallDto {
+        return hallService.getById(id).toDto()
     }
 
     @PostMapping
     fun save(@RequestBody hallDto: HallDto): HallDto {
-        val addedHall = hallService.save(hallDto.toModel())
-        return addedHall.toDto()
+        return hallService.save(hallDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String) {
-        return hallService.removeById(id.toLong())
+    fun delete(@PathVariable id: Long) {
+        return hallService.removeById(id)
     }
 }

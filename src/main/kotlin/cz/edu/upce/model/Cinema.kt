@@ -16,13 +16,7 @@ class Cinema(
     var telephone: String = "",
     var email: String = ""
 ) {
-    fun toDto(): CinemaDto {
-        return CinemaDto(
-            this.id,
-            this.name,
-            this.address,
-            this.telephone,
-            this.email
-        )
-    }
+    fun toDto(): CinemaDto = CinemaDto(
+        id, name, address, telephone, email
+    )
 }

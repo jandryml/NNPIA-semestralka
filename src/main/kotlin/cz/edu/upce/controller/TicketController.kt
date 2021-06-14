@@ -19,23 +19,22 @@ class TicketController {
     }
 
     @GetMapping(params = ["userId"])
-    fun getAllByUserId(@RequestParam userId: String): List<TicketDto> {
-        return ticketService.getByUserId(userId.toLong()).map { it.toDto() }
+    fun getAllByUserId(@RequestParam userId: Long): List<TicketDto> {
+        return ticketService.getByUserId(userId).map { it.toDto() }
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String): TicketDto {
-        return ticketService.getById(id.toLong()).toDto()
+    fun detail(@PathVariable id: Long): TicketDto {
+        return ticketService.getById(id).toDto()
     }
 
     @PostMapping
     fun save(@RequestBody ticketDto: TicketDto): TicketDto {
-        val addedTicket = ticketService.save(ticketDto.toModel())
-        return addedTicket.toDto()
+        return ticketService.save(ticketDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String) {
-        return ticketService.removeById(id.toLong())
+    fun delete(@PathVariable id: Long) {
+        return ticketService.removeById(id)
     }
 }

@@ -13,23 +13,21 @@ class FilmController {
 
     @GetMapping
     fun getAll(): List<FilmDto> {
-        val allFilms = filmService.getAll()
-        return allFilms.map { it.toDto() }
+        return filmService.getAll().map { it.toDto() }
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String): FilmDto {
-        return filmService.getById(id.toLong()).toDto()
+    fun detail(@PathVariable id: Long): FilmDto {
+        return filmService.getById(id).toDto()
     }
 
     @PostMapping
     fun save(@RequestBody filmDto: FilmDto): FilmDto {
-        val addedFilm = filmService.save(filmDto.toModel())
-        return addedFilm.toDto()
+        return filmService.save(filmDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String) {
-        return filmService.removeById(id.toLong())
+    fun delete(@PathVariable id: Long) {
+        return filmService.removeById(id)
     }
 }

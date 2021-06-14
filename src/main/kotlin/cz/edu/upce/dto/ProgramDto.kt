@@ -9,12 +9,7 @@ class ProgramDto(
     var hall: HallDto?,
     var film: FilmDto?
 ) {
-    fun toModel(): Program {
-        return Program(
-            id,
-            LocalDateTime.parse(timestamp, Program.dateTimeFormatter),
-            hall?.toModel(),
-            film?.toModel()
-        )
-    }
+    fun toModel(): Program = Program(
+        id, LocalDateTime.parse(timestamp, Program.dateTimeFormatter), hall?.toModel(), film?.toModel()
+    )
 }

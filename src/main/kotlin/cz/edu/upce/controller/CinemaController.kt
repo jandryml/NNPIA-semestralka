@@ -14,24 +14,21 @@ class CinemaController {
 
     @GetMapping
     fun getAll(): List<CinemaDto> {
-        val allCinemas = cinemaService.getAll()
-        return allCinemas.map { it.toDto() }
+        return cinemaService.getAll().map { it.toDto() }
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String): CinemaDto {
-        return cinemaService.getById(id.toLong()).toDto()
+    fun detail(@PathVariable id: Long): CinemaDto {
+        return cinemaService.getById(id).toDto()
     }
 
     @PostMapping
     fun save(@RequestBody cinemaDto: CinemaDto): CinemaDto {
-        val addedCinema = cinemaService.save(cinemaDto.toModel())
-        return addedCinema.toDto()
+        return cinemaService.save(cinemaDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String) {
-        return cinemaService.removeById(id.toLong())
+    fun delete(@PathVariable id: Long) {
+        return cinemaService.removeById(id)
     }
-
 }

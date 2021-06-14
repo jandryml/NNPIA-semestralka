@@ -15,11 +15,7 @@ class Ticket(
     @JoinColumn(name = "program_id")
     val program: Program? = null
 ) {
-    fun toDto(): TicketDto {
-        return TicketDto(
-            this.id,
-            this.user?.toDto(),
-            this.program?.toDto()
-        )
-    }
+    fun toDto(): TicketDto = TicketDto(
+        id, user?.toDto(), program?.toDto()
+    )
 }

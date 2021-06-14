@@ -24,12 +24,7 @@ class User(
     @JoinTable(name = "user_roles")
     var roles: Set<Role> = HashSet()
 ) {
-    fun toDto(): UserDto {
-        return UserDto(
-            this.id!!,
-            this.username,
-            this.email,
-            this.roles.map { it.toString() }
-        )
-    }
+    fun toDto(): UserDto = UserDto(
+        id!!, username, email, roles.map { it.toString() }
+    )
 }

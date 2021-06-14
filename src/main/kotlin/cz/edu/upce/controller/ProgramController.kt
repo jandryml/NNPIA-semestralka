@@ -15,18 +15,17 @@ class ProgramController {
 
     @GetMapping
     fun getAll(): List<ProgramDto> {
-        val allPrograms = programService.getAll()
-        return allPrograms.map { it.toDto() }
+        return programService.getAll().map { it.toDto() }
     }
 
     @GetMapping(params = ["hallId"])
-    fun getAllByHallId(@RequestParam hallId: String): List<ProgramDto> {
-        return programService.getByCinemaId(hallId.toLong()).map { it.toDto() }
+    fun getAllByHallId(@RequestParam hallId: Long): List<ProgramDto> {
+        return programService.getByCinemaId(hallId).map { it.toDto() }
     }
 
     @GetMapping(params = ["filmId"])
-    fun getAllByFilmId(@RequestParam filmId: String): List<ProgramDto> {
-        return programService.getByFilmId(filmId.toLong()).map { it.toDto() }
+    fun getAllByFilmId(@RequestParam filmId: Long): List<ProgramDto> {
+        return programService.getByFilmId(filmId).map { it.toDto() }
     }
 
     @GetMapping(params = ["date"])
@@ -36,18 +35,17 @@ class ProgramController {
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String): ProgramDto {
-        return programService.getById(id.toLong()).toDto()
+    fun detail(@PathVariable id: Long): ProgramDto {
+        return programService.getById(id).toDto()
     }
 
     @PostMapping
     fun save(@RequestBody programDto: ProgramDto): ProgramDto {
-        val addedProgram = programService.save(programDto.toModel())
-        return addedProgram.toDto()
+        return programService.save(programDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String) {
-        return programService.removeById(id.toLong())
+    fun delete(@PathVariable id: Long) {
+        return programService.removeById(id)
     }
 }

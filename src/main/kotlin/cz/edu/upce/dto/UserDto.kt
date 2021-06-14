@@ -10,14 +10,9 @@ class UserDto(
     var email: String,
     val roles: List<String>
 ) {
-    fun toModel(): User {
-        return User(
-            id,
-            username,
-            email,
-            roles = transferRoles()
-        )
-    }
+    fun toModel(): User = User(
+        id, username, email, roles = transferRoles()
+    )
 
     private fun transferRoles(): Set<Role> {
         return roles.map { Role(roleType = RoleType.valueOf(it)) }.toSet()

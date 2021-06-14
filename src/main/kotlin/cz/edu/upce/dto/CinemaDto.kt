@@ -9,13 +9,7 @@ class CinemaDto(
     var telephone: String?,
     var email: String?
 ) {
-    fun toModel(): Cinema {
-        return Cinema(
-            id,
-            name ?: "",
-            address ?: "",
-            telephone ?: "",
-            email ?: ""
-        )
-    }
+    fun toModel(): Cinema = Cinema(
+        id, name ?: "", address ?: "", telephone ?: "", email ?: ""
+    )
 }

@@ -9,13 +9,7 @@ data class FilmDto(
     var durationMinute: Int?,
     var language: String?
 ) {
-    fun toModel(): Film {
-        return Film(
-            id,
-            name ?: "",
-            description ?: "",
-            durationMinute ?: 0,
-            language ?: ""
-        )
-    }
+    fun toModel(): Film = Film(
+        id, name ?: "", description ?: "", durationMinute ?: 0, language ?: ""
+    )
 }

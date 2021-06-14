@@ -1,7 +1,10 @@
 package cz.edu.upce.model
 
 import cz.edu.upce.dto.FilmDto
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
 
 @Entity(name = "film")
 class Film(
@@ -13,13 +16,7 @@ class Film(
     var durationMinute: Int = 0,
     var language: String = ""
 ) {
-    fun toDto(): FilmDto {
-        return FilmDto(
-            this.id,
-            this.name,
-            this.description,
-            this.durationMinute,
-            this.language
-        )
-    }
+    fun toDto(): FilmDto = FilmDto(
+        id, name, description, durationMinute, language
+    )
 }

@@ -14,12 +14,7 @@ class Hall(
     @JoinColumn(name = "cinema_id")
     val cinema: Cinema? = null
 ) {
-    fun toDto(): HallDto {
-        return HallDto(
-            this.id,
-            this.name,
-            this.capacity,
-            this.cinema?.toDto()
-        )
-    }
+    fun toDto(): HallDto = HallDto(
+        id, name, capacity, cinema?.toDto()
+    )
 }
