@@ -13,6 +13,8 @@ import BoardAdmin from "./components/general/BoardAdmin";
 import Navbar from "./components/general/Navbar";
 import FilmView from "./components/film/FilmView";
 import FilmDetail from "./components/film/FilmDetail";
+import CinemaView from "./components/cinema/CinemaView";
+import CinemaDetail from "./components/cinema/CinemaDetail";
 
 const App = () => {
     return (
@@ -28,6 +30,8 @@ const App = () => {
 
                         <Route exact path="/film" component={FilmView}/>
                         <Route exact path="/film/:id" component={FilmDetail}/>
+                        <Route exact path="/cinema" component={CinemaView}/>
+                        <Route exact path="/cinema/:id" component={CinemaDetail}/>
 
                         <Route exact path="/user" component={BoardUser}/>
                         <Route exact path="/mod" component={BoardModerator}/>

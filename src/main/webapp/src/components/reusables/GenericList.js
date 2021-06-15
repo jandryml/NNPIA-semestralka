@@ -3,7 +3,7 @@ const GenericList = ({items, title, ListItem}) => {
         <div className="blog-list">
             <h2>{title}</h2>
             {items.map((item) => (
-                <ListItem item={item}/>
+                <ListItem item={item} key={item.id}/>
             ))}
         </div>
     );

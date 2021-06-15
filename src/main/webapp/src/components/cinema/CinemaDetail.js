@@ -1,12 +1,13 @@
 import {useHistory, useParams} from "react-router";
 import GenericDetail from "../reusables/GenericDetail";
 
-const FilmDetail = () => {
+const CinemaDetail = () => {
     const {id} = useParams();
     const history = useHistory();
 
+    //TODO refactor functions
     const handleModify = () => {
-        fetch("http://localhost:8000/film/" + id, {
+        fetch("http://localhost:8000/cinema/" + id, {
             method: "DELETE",
         }).then(() => {
             history.push("/film");
@@ -14,30 +15,29 @@ const FilmDetail = () => {
     };
 
     const handleClick = () => {
-        fetch("http://localhost:8000/film/" + id, {
+        fetch("http://localhost:8000/cinema/" + id, {
             method: "DELETE",
         }).then(() => {
             history.push("/film");
         });
     };
 
-    const DetailLayout = ({item: film}) => {
+    const DetailLayout = ({item: cinema}) => {
         return (
             <div>
-                {film && <div>
-                    <h2>{film.name}</h2>
-                    <p>Language: {film.language}</p>
-                    <p>Duration: {film.durationMinute} minute(s)</p>
-                    <p>Description: </p>
-                    <div>{film.description}</div>
+                {cinema && <div>
+                    <h2>{cinema.name}</h2>
+                    <p>Address: {cinema.address}</p>
+                    <p>Email: {cinema.email}</p>
+                    <p>Telephone: {cinema.telephone}</p>
                 </div>}
             </div>);
     }
 
     return (
         <GenericDetail DetailLayout={DetailLayout} handleModify={handleModify} handleDelete={handleClick}
-                       url={"http://localhost:8080/api/film/"}/>
+                       url={"http://localhost:8080/api/cinema/"}/>
     );
 };
 
-export default FilmDetail;
+export default CinemaDetail;

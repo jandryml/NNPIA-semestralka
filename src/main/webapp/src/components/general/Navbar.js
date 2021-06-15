@@ -41,6 +41,12 @@ const Navbar = () => {
                     </Link>
                 </li>
 
+                <li className="nav-item">
+                    <Link to={"/cinema"} className="nav-link">
+                        Cinemas
+                    </Link>
+                </li>
+
                 {/*{showAdminBoard && (*/}
                 {/*    <li className="nav-item">*/}
                 {/*        <Link to={"/admin"} className="nav-link">*/}

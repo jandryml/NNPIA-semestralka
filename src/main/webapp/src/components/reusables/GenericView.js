@@ -1,8 +1,8 @@
-import useFetch from "../../services/useFetch";
+import useFetch from "../../hooks/useFetch";
 import GenericList from "../reusables/GenericList";
 
 const GenericView = ({url, title, ListItem}) => {
-    const {data, isPending, error} = useFetch(url);
+    const {data, error, isPending} = useFetch(url);
 
     return (
         <div className="home">
