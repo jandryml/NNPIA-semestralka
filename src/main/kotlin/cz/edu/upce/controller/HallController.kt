@@ -3,6 +3,8 @@ package cz.edu.upce.controller
 import cz.edu.upce.dto.HallDto
 import cz.edu.upce.service.IHallService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,13 +15,20 @@ class HallController {
     lateinit var hallService: IHallService
 
     @GetMapping
-    fun getAll(): List<HallDto> {
-        return hallService.getAll().map { it.toDto() }
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<HallDto> {
+        return hallService.getAll(PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping(params = ["cinemaId"])
-    fun getAllByCinemaId(@RequestParam cinemaId: Long): List<HallDto> {
-        return hallService.getByCinemaId(cinemaId).map { it.toDto() }
+    fun getAllByCinemaId(
+        @RequestParam cinemaId: Long,
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<HallDto> {
+        return hallService.getByCinemaId(cinemaId, PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping("/{id}")

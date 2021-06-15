@@ -1,9 +1,9 @@
 import FilmListItem from "./FilmListItem";
-import GenericView from "../reusables/GenericView";
+import GenericList from "../reusables/GenericList";
 
 const FilmView = () => {
     return (
-        <GenericView title="All Films" ListItem={FilmListItem} url={'http://localhost:8080/api/film'}/>
+        <GenericList title="All Films" ListItem={FilmListItem} url={'http://localhost:8080/api/film'}/>
     );
 };
 

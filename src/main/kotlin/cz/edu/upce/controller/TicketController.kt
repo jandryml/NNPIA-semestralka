@@ -3,6 +3,8 @@ package cz.edu.upce.controller
 import cz.edu.upce.dto.TicketDto
 import cz.edu.upce.service.ITicketService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,14 +15,20 @@ class TicketController {
     lateinit var ticketService: ITicketService
 
     @GetMapping
-    fun getAll(): List<TicketDto> {
-        val allTickets = ticketService.getAll()
-        return allTickets.map { it.toDto() }
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<TicketDto> {
+        return ticketService.getAll(PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping(params = ["userId"])
-    fun getAllByUserId(@RequestParam userId: Long): List<TicketDto> {
-        return ticketService.getByUserId(userId).map { it.toDto() }
+    fun getAllByUserId(
+        @RequestParam userId: Long,
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<TicketDto> {
+        return ticketService.getByUserId(userId, PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping("/{id}")

@@ -3,6 +3,8 @@ package cz.edu.upce.controller
 import cz.edu.upce.dto.FilmDto
 import cz.edu.upce.service.IFilmService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -12,8 +14,11 @@ class FilmController {
     lateinit var filmService: IFilmService
 
     @GetMapping
-    fun getAll(): List<FilmDto> {
-        return filmService.getAll().map { it.toDto() }
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<FilmDto> {
+        return filmService.getAll(PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping("/{id}")
