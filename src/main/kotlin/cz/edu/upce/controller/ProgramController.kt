@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 
 @RestController
 @RequestMapping("/api/program")
@@ -47,8 +49,8 @@ class ProgramController {
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "5") size: Int
     ): Page<ProgramDto> {
-        // TODO change to use real param
-        return programService.getForDay(LocalDate.now(), PageRequest.of(page, size)).map { it.toDto() }
+        val localDate =  LocalDate.parse(date, DateTimeFormatter.ofPattern("MM/dd/yyyy"))
+        return programService.getForDay(localDate, PageRequest.of(page, size)).map { it.toDto() }
     }
 
     @GetMapping("/{id}")

@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -15,13 +15,15 @@ import FilmView from "./components/film/FilmView";
 import FilmDetail from "./components/film/FilmDetail";
 import CinemaView from "./components/cinema/CinemaView";
 import CinemaDetail from "./components/cinema/CinemaDetail";
+import ProgramView from "./components/program/ProgramView";
+import ProgramDetail from "./components/program/ProgramDetail";
 
 const App = () => {
     return (
         <BrowserRouter>
             <div className="App">
                 <Navbar/>
-                <div className="content">
+                <div className="container mt-3">
                     <Switch>
                         <Route exact path={["/", "/home"]} component={Home}/>
                         <Route exact path="/login" component={Login}/>
@@ -32,6 +34,10 @@ const App = () => {
                         <Route exact path="/film/:id" component={FilmDetail}/>
                         <Route exact path="/cinema" component={CinemaView}/>
                         <Route exact path="/cinema/:id" component={CinemaDetail}/>
+
+                        <Route exact path="/program" component={ProgramView}/>
+                        <Route exact path="/program/:id" component={ProgramDetail}/>
+
 
                         <Route exact path="/user" component={BoardUser}/>
                         <Route exact path="/mod" component={BoardModerator}/>

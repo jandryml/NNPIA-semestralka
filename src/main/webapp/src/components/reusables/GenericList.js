@@ -53,22 +53,15 @@ const GenericList = ({url, title, ListItem}) => {
         axios.create().get(url, {params})
             .then((response) => {
                 const {content: newData, totalPages} = response.data;
-                console.log("New data: ", newData);
-                console.log("Total pages: ",totalPages);
-
                 setData(newData);
                 setCount(totalPages);
-
-                console.log(response.data.content);
-                console.log("New data: ", newData);
-
             })
             .catch((e) => {
                 console.log(e);
             });
     };
 
-    useEffect(retrieveData, [page, pageSize]);
+    useEffect(retrieveData, [url, page, pageSize]);
 
     const handlePageChange = (event, value) => {
         setPage(value);
@@ -92,7 +85,7 @@ const GenericList = ({url, title, ListItem}) => {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Search by title"
+                            placeholder="Search by name"
                             value={filterValue}
                             onChange={onChangeFilterValue}
                         />
@@ -107,20 +100,7 @@ const GenericList = ({url, title, ListItem}) => {
                         </div>
                     </div>
                 </div>
-                {/*TODO add skeleton*/}
-                {data && data.map((item) => (
-                    <ListItem item={item} listKey={item.id}/>
-                ))}
-
                 <div className="mt-3">
-                    {"Items per Page: "}
-                    <select onChange={handlePageSizeChange} value={pageSize}>
-                        {pageSizes.map((size) => (
-                            <option key={size} value={size}>
-                                {size}
-                            </option>
-                        ))}
-                    </select>
                     <Pagination
                         className="my-3"
                         count={count}
@@ -132,6 +112,20 @@ const GenericList = ({url, title, ListItem}) => {
                         onChange={handlePageChange}
                     />
                 </div>
+
+                {/*TODO add skeleton*/}
+                {data && data.map((item) => (
+                    <ListItem item={item} listKey={item.id}/>
+                ))}
+
+                {"Items per Page: "}
+                <select onChange={handlePageSizeChange} value={pageSize}>
+                    {pageSizes.map((size) => (
+                        <option key={size} value={size}>
+                            {size}
+                        </option>
+                    ))}
+                </select>
             </div>}
         </div>
     );
