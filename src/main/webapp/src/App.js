@@ -38,6 +38,7 @@ const App = () => {
                         <Route exact path="/program" component={ProgramView}/>
                         <Route exact path="/program/:id" component={ProgramDetail}/>
 
+                        <Route exact path="/ticket/:id" component={ProgramDetail}/>
 
                         <Route exact path="/user" component={BoardUser}/>
                         <Route exact path="/mod" component={BoardModerator}/>

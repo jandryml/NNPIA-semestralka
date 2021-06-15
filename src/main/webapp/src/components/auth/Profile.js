@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import AuthService from "../../services/auth/auth.service";
+import TicketProfileView from "../ticket/TicketProfileView";
 
 const Profile = () => {
 
@@ -34,6 +35,8 @@ const Profile = () => {
                 <p>
                     <strong>Token:</strong> {currentUser.accessToken}
                 </p>
+                <hr/>
+                <TicketProfileView id={currentUser.id}/>
             </div>}
         </div>
     );

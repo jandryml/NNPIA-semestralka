@@ -80,26 +80,28 @@ const GenericList = ({url, title, ListItem}) => {
 
             <div className="blog-list">
                 <h2>{title}</h2>
-                <div className="col-md-8">
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search by name"
-                            value={filterValue}
-                            onChange={onChangeFilterValue}
-                        />
-                        <div className="input-group-append">
-                            <button
-                                className="btn btn-outline-secondary"
-                                type="button"
-                                onClick={retrieveData}
-                            >
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+                {/*TODO fixup search*/}
+                {/*<div className="col-md-8">*/}
+                {/*    <div className="input-group mb-3">*/}
+                {/*        <input*/}
+                {/*            type="text"*/}
+                {/*            className="form-control"*/}
+                {/*            placeholder="Search by name"*/}
+                {/*            value={filterValue}*/}
+                {/*            onChange={onChangeFilterValue}*/}
+                {/*        />*/}
+                {/*        <div className="input-group-append">*/}
+                {/*            <button*/}
+                {/*                className="btn btn-outline-secondary"*/}
+                {/*                type="button"*/}
+                {/*                onClick={retrieveData}*/}
+                {/*            >*/}
+                {/*                Search*/}
+                {/*            </button>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="mt-3">
                     <Pagination
                         className="my-3"

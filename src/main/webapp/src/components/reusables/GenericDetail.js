@@ -13,9 +13,9 @@ const GenericDetail = ({DetailLayout, handleModify, handleDelete, url}) => {
             {data &&
             <article>
                 <DetailLayout item={data}/>
-                <button onClick={handleModify}>modify</button>
-                <button onClick={handleDelete}>delete</button>
-                <button>back</button>
+                <button className="example-custom-input" onClick={handleModify}>modify</button>
+                <button className="example-custom-input" onClick={handleDelete}>delete</button>
+                <button className="example-custom-input">back</button>
             </article>
             }
         </div>
