@@ -29,7 +29,6 @@ const ProgramView = () => {
                 customInput={<ExampleCustomInput />}
                 onChange={date => {
                     setStartDate(date);
-                    console.log(moment(date).format("L"))
                 }}
             />
             {startDate && <GenericList title="Program for day" ListItem={ProgramListItem}

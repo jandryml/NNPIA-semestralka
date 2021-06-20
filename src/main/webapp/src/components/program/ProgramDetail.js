@@ -23,7 +23,6 @@ const ProgramDetail = () => {
     };
 
     const DetailLayout = ({item}) => {
-        console.log("in detail", item);
         return (
             <div>
                 {item && <div>
