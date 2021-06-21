@@ -1,9 +1,11 @@
 import HallListItem from "./HallListItem";
 import GenericList from "../reusables/GenericList";
 import {useHistory} from "react-router";
+import useRoles from "../../hooks/useRoles";
 
 const HallView = ({parent: cinema}) => {
     const history = useHistory();
+    const {isAdmin} = useRoles();
 
     function handleClick() {
         history.push(`/hall/add/${cinema.id}`);
@@ -12,7 +14,7 @@ const HallView = ({parent: cinema}) => {
     return (
         <div>
             <GenericList title={"All halls of cinema: " + cinema.name} ListItem={HallListItem} url={'http://localhost:8080/api/hall?cinemaId=' + cinema.id} parentId={cinema.id}/>
-            <button onClick={handleClick}>Add Hall</button>
+            {isAdmin && <button onClick={handleClick}>Add Hall</button>}
         </div>
 
     );

@@ -43,7 +43,6 @@ const CinemaForm = ({input: inputCinema}) => {
         CinemaDataService.save(cinema)
             .then(response => {
                 setSubmitted(true);
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);

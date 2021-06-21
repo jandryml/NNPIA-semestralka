@@ -37,15 +37,6 @@ const GenericList = ({url, title, ListItem, parentId}) => {
         return params;
     };
 
-    // const retrieveData = () => {
-    //     const params = getRequestParams(filterValue, page, pageSize);
-    //
-    //     const {content, totalPages} = useFetch(url, params).data;
-    //     data = content
-    //     // setTutorials(content);
-    //     setCount(totalPages);
-    // };
-
     const retrieveData = () => {
         const params = getRequestParams(filterValue, page, pageSize);
         console.log("getting data");
@@ -74,34 +65,11 @@ const GenericList = ({url, title, ListItem, parentId}) => {
 
     return (
         <div className="home">
-            {/*{error && <div>{error}</div>}*/}
-            {/*{isPending && <div>Loading...</div>}*/}
             {data &&
 
             <div className="blog-list">
                 <h2>{title}</h2>
 
-                {/*TODO fixup search*/}
-                {/*<div className="col-md-8">*/}
-                {/*    <div className="input-group mb-3">*/}
-                {/*        <input*/}
-                {/*            type="text"*/}
-                {/*            className="form-control"*/}
-                {/*            placeholder="Search by name"*/}
-                {/*            value={filterValue}*/}
-                {/*            onChange={onChangeFilterValue}*/}
-                {/*        />*/}
-                {/*        <div className="input-group-append">*/}
-                {/*            <button*/}
-                {/*                className="btn btn-outline-secondary"*/}
-                {/*                type="button"*/}
-                {/*                onClick={retrieveData}*/}
-                {/*            >*/}
-                {/*                Search*/}
-                {/*            </button>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
                 <div className="mt-3">
                     <Pagination
                         className="my-3"

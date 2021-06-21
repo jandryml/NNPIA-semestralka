@@ -6,13 +6,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment'
 import {useHistory} from "react-router";
+import useRoles from "../../hooks/useRoles";
 
 const ProgramView = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [url, setUrl] = useState('http://localhost:8080/api/program?date=' + moment(startDate).format("L"));
     const history = useHistory();
 
-    const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    const {isAdmin} = useRoles();
+
+
+    const ExampleCustomInput = forwardRef(({value, onClick}, ref) => (
         <button className="example-custom-input" onClick={onClick} ref={ref}>
             {value}
         </button>
@@ -32,14 +36,14 @@ const ProgramView = () => {
             <DatePicker
                 selected={startDate}
                 dateFormat="dd/MM/yyyy"
-                customInput={<ExampleCustomInput />}
+                customInput={<ExampleCustomInput/>}
                 onChange={date => {
                     setStartDate(date);
                 }}
             />
             {startDate && <GenericList title="Program for day" ListItem={ProgramListItem}
                                        url={url}/>}
-            <button onClick={handleClick}>Add program</button>
+            {isAdmin && <button onClick={handleClick}>Add program</button>}
 
         </div>
     );

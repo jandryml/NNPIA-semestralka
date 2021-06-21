@@ -8,7 +8,6 @@ const FilmDetail = () => {
     const history = useHistory();
 
     const handleDelete = () => {
-        console.log("removing film detail")
         FilmDataService.remove(id).then(() => {
             history.push("/film");
         });

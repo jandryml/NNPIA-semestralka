@@ -8,7 +8,6 @@ const HallDetail = () => {
     const history = useHistory();
 
     const handleDelete = () => {
-        console.log("removing film detail")
         HallDataService.remove(id).then(() => {
             history.go(-1);
         });

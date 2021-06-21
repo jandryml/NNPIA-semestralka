@@ -9,7 +9,12 @@ class ProgramDto(
     var hall: HallDto?,
     var film: FilmDto?
 ) {
-    fun toModel(): Program = Program(
-        id, LocalDateTime.parse(timestamp, Program.dateTimeFormatter), hall?.toModel(), film?.toModel()
-    )
+    fun toModel(): Program {
+        return if (timestamp == null) Program(
+            id, hall = hall?.toModel(), film = film?.toModel()
+        ) else Program(
+            id, LocalDateTime.parse(timestamp, Program.dateTimeFormatter), hall?.toModel(), film?.toModel()
+        )
+    }
+
 }

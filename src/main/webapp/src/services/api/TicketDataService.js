@@ -1,19 +1,19 @@
 import http from "./http-common";
 
 const getAll = (params) => {
-    return http.get("/cinema", {params});
+    return http.get("/ticket", {params});
 };
 
 const get = id => {
-    return http.get(`/cinema/${id}`);
+    return http.get(`/ticket/${id}`);
 };
 
 const save = data => {
-    return http.post("/cinema", data);
+    return http.post("/ticket", data);
 };
 
 const remove = id => {
-    return http.delete(`/cinema/${id}`);
+    return http.delete(`/ticket/${id}`);
 };
 
 export default {

@@ -29,16 +29,15 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-    console.log("Logging user")
-    console.log(localStorage.getItem("user"))
     return JSON.parse(localStorage.getItem("user"));
 };
+
 
 const auth_service = {
     register,
     login,
     logout,
-    getCurrentUser,
+    getCurrentUser
 }
 
 export default auth_service;

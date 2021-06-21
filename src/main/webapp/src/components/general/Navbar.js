@@ -9,7 +9,6 @@ const Navbar = () => {
 
     useEffect(() => {
         const user = AuthService.getCurrentUser();
-        console.log(user)
 
         if (user) {
             setCurrentUser(user);

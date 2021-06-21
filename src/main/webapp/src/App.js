@@ -21,6 +21,8 @@ import FilmForm from "./components/film/FilmForm";
 import CinemaForm from "./components/cinema/CinemaForm";
 import HallDetail from "./components/hall/HallDetail";
 import HallForm from "./components/hall/HallForm";
+import ProgramForm from "./components/program/ProgramForm";
+import TicketDetail from "./components/ticket/TicketDetail";
 
 const App = () => {
     return (
@@ -46,9 +48,10 @@ const App = () => {
                         <Route exact path="/hall/:id" component={HallDetail}/>
 
                         <Route exact path="/program" component={ProgramView}/>
+                        <Route exact path="/program/add" component={ProgramForm}/>
                         <Route exact path="/program/:id" component={ProgramDetail}/>
 
-                        <Route exact path="/ticket/:id" component={ProgramDetail}/>
+                        <Route exact path="/ticket/:id" component={TicketDetail}/>
 
                         <Route exact path="/user" component={BoardUser}/>
                         <Route exact path="/mod" component={BoardModerator}/>

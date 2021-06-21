@@ -9,7 +9,6 @@ const CinemaDetail = () => {
     const history = useHistory();
 
     const handleDelete = () => {
-        console.log("removing cinema detail")
         CinemaDataService.remove(id).then(() => {
             history.push("/cinema");
         });

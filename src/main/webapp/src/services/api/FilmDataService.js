@@ -9,7 +9,6 @@ const get = id => {
 };
 
 const save = data => {
-    console.log("posting ", data);
     return http.post("/film", data);
 };
 

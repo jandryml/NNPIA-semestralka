@@ -1,24 +1,16 @@
 import {useHistory, useParams} from "react-router";
 import GenericDetail from "../reusables/GenericDetail";
 import moment from "moment";
+import TicketDataService from "../../services/api/TicketDataService";
 
 const TicketDetail = () => {
     const {id} = useParams();
     const history = useHistory();
 
-    const handleModify = () => {
-        fetch("http://localhost:8000/film/" + id, {
-            method: "DELETE",
-        }).then(() => {
-            history.push("/film");
-        });
-    };
 
-    const handleClick = () => {
-        fetch("http://localhost:8000/film/" + id, {
-            method: "DELETE",
-        }).then(() => {
-            history.push("/film");
+    const handleDelete = () => {
+        TicketDataService.remove(id).then(() => {
+            history.go(-1);
         });
     };
 
@@ -29,14 +21,14 @@ const TicketDetail = () => {
                     <h3>{ticket.program.film.name}</h3>
                     <p>Date: {moment(ticket.program.timestamp).format("Do MMMM YYYY, h:mm a")}</p>
                     <p>Username: {ticket.user.username}</p>
-                    <p>Cinema: {item.program.hall.cinema.name}</p>
-                    <p>Hall: {item.program.hall.name}</p>
+                    <p>Cinema: {ticket.program.hall.cinema.name}</p>
+                    <p>Hall: {ticket.program.hall.name}</p>
                 </div>}
             </div>);
     }
 
     return (
-        <GenericDetail DetailLayout={DetailLayout} handleModify={handleModify} handleDelete={handleClick}
+        <GenericDetail DetailLayout={DetailLayout} handleDelete={handleDelete} modifiable={false} deletableByUser={true}
                        url={"http://localhost:8080/api/ticket/"}/>
     );
 };

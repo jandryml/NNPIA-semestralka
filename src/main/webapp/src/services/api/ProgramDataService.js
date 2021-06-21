@@ -1,19 +1,19 @@
 import http from "./http-common";
 
 const getAll = (params) => {
-    return http.get("/hall", {params});
+    return http.get("/program", {params});
 };
 
 const get = id => {
-    return http.get(`/hall/${id}`);
+    return http.get(`/program/${id}`);
 };
 
 const save = data => {
-    return http.post("/hall", data);
+    return http.post("/program", data);
 };
 
 const remove = id => {
-    return http.delete(`/hall/${id}`);
+    return http.delete(`/program/${id}`);
 };
 
 const findByCinemaId = cinemaId => {
