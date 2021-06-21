@@ -10,7 +10,7 @@ import useRoles from "../../hooks/useRoles";
 const ProgramDetail = () => {
     const {id} = useParams();
     const history = useHistory();
-    const {isUser} = useRoles();
+    const {isUser, isModerator} = useRoles();
 
     const [submitted, setSubmitted] = useState(false);
 
@@ -20,6 +20,9 @@ const ProgramDetail = () => {
         });
     };
 
+    const handleTicketScanning = () => {
+        history.push("/program/revision/" + id);
+    };
 
     const handleBuyTicket = () => {
         const user = AuthService.getCurrentUser()
@@ -47,6 +50,7 @@ const ProgramDetail = () => {
                             <p>Cinema: {item.hall.cinema.name}</p>
                             <p>Hall: {item.hall.name}</p>
                             { isUser && <button className="example-custom-input" onClick={handleBuyTicket}>Buy ticket</button>}
+                            { isModerator && <button className="example-custom-input" onClick={handleTicketScanning}>Ticket scanning</button>}
                         </div>}
                     </div>
                 )}

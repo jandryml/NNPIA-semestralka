@@ -31,6 +31,15 @@ class TicketController {
         return ticketService.getByUserId(userId, PageRequest.of(page, size)).map { it.toDto() }
     }
 
+    @GetMapping(params = ["programId"])
+    fun getAllByProgramId(
+        @RequestParam programId: Long,
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "5") size: Int
+    ): Page<TicketDto> {
+        return ticketService.getByProgramId(programId, PageRequest.of(page, size)).map { it.toDto() }
+    }
+
     @GetMapping("/{id}")
     fun detail(@PathVariable id: Long): TicketDto {
         return ticketService.getById(id).toDto()

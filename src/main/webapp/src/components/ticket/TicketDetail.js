@@ -23,6 +23,7 @@ const TicketDetail = () => {
                     <p>Username: {ticket.user.username}</p>
                     <p>Cinema: {ticket.program.hall.cinema.name}</p>
                     <p>Hall: {ticket.program.hall.name}</p>
+                    <p>Was used: {ticket.isUsed ? "true" : "false"}</p>
                 </div>}
             </div>);
     }

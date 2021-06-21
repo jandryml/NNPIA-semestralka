@@ -23,6 +23,7 @@ import HallDetail from "./components/hall/HallDetail";
 import HallForm from "./components/hall/HallForm";
 import ProgramForm from "./components/program/ProgramForm";
 import TicketDetail from "./components/ticket/TicketDetail";
+import TicketProgramView from "./components/ticket/TicketProgramView";
 
 const App = () => {
     return (
@@ -50,6 +51,9 @@ const App = () => {
                         <Route exact path="/program" component={ProgramView}/>
                         <Route exact path="/program/add" component={ProgramForm}/>
                         <Route exact path="/program/:id" component={ProgramDetail}/>
+
+                        <Route exact path="/program/revision/:id" component={TicketProgramView}/>
+
 
                         <Route exact path="/ticket/:id" component={TicketDetail}/>
 
