@@ -1,24 +1,17 @@
 import {useHistory, useParams} from "react-router";
 import GenericDetail from "../reusables/GenericDetail";
+import CinemaForm from "./CinemaForm";
+import CinemaDataService from "../../services/api/CinemaDataService";
+import HallView from "../hall/HallView";
 
 const CinemaDetail = () => {
     const {id} = useParams();
     const history = useHistory();
 
-    //TODO refactor functions
-    const handleModify = () => {
-        fetch("http://localhost:8000/cinema/" + id, {
-            method: "DELETE",
-        }).then(() => {
-            history.push("/film");
-        });
-    };
-
-    const handleClick = () => {
-        fetch("http://localhost:8000/cinema/" + id, {
-            method: "DELETE",
-        }).then(() => {
-            history.push("/film");
+    const handleDelete = () => {
+        console.log("removing cinema detail")
+        CinemaDataService.remove(id).then(() => {
+            history.push("/cinema");
         });
     };
 
@@ -34,8 +27,9 @@ const CinemaDetail = () => {
             </div>);
     }
 
+
     return (
-        <GenericDetail DetailLayout={DetailLayout} handleModify={handleModify} handleDelete={handleClick}
+        <GenericDetail DetailLayout={DetailLayout} DetailForm={CinemaForm} AdditionalLayout={HallView} handleDelete={handleDelete}
                        url={"http://localhost:8080/api/cinema/"}/>
     );
 };

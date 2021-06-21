@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Pagination from "@material-ui/lab/Pagination";
 import axios from "axios";
 
-const GenericList = ({url, title, ListItem}) => {
+const GenericList = ({url, title, ListItem, parentId}) => {
     // let {data, error, isPending} = useFetch(url);
     const [data, setData] = useState([]);
 
@@ -117,7 +117,7 @@ const GenericList = ({url, title, ListItem}) => {
 
                 {/*TODO add skeleton*/}
                 {data && data.map((item) => (
-                    <ListItem item={item} listKey={item.id}/>
+                    <ListItem item={item} listKey={item.id} parentId={parentId}/>
                 ))}
 
                 {"Items per Page: "}

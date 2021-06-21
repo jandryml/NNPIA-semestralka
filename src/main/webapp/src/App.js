@@ -17,6 +17,10 @@ import CinemaView from "./components/cinema/CinemaView";
 import CinemaDetail from "./components/cinema/CinemaDetail";
 import ProgramView from "./components/program/ProgramView";
 import ProgramDetail from "./components/program/ProgramDetail";
+import FilmForm from "./components/film/FilmForm";
+import CinemaForm from "./components/cinema/CinemaForm";
+import HallDetail from "./components/hall/HallDetail";
+import HallForm from "./components/hall/HallForm";
 
 const App = () => {
     return (
@@ -31,9 +35,15 @@ const App = () => {
                         <Route exact path="/profile" component={Profile}/>
 
                         <Route exact path="/film" component={FilmView}/>
+                        <Route exact path="/film/add" component={FilmForm}/>
                         <Route exact path="/film/:id" component={FilmDetail}/>
+
                         <Route exact path="/cinema" component={CinemaView}/>
+                        <Route exact path="/cinema/add" component={CinemaForm}/>
                         <Route exact path="/cinema/:id" component={CinemaDetail}/>
+
+                        <Route exact path="/hall/add/:cinemaId" component={HallForm}/>
+                        <Route exact path="/hall/:id" component={HallDetail}/>
 
                         <Route exact path="/program" component={ProgramView}/>
                         <Route exact path="/program/:id" component={ProgramDetail}/>

@@ -1,22 +1,15 @@
 import {useHistory, useParams} from "react-router";
 import GenericDetail from "../reusables/GenericDetail";
+import FilmForm from "./FilmForm";
+import FilmDataService from "../../services/api/FilmDataService";
 
 const FilmDetail = () => {
     const {id} = useParams();
     const history = useHistory();
 
-    const handleModify = () => {
-        fetch("http://localhost:8000/film/" + id, {
-            method: "DELETE",
-        }).then(() => {
-            history.push("/film");
-        });
-    };
-
-    const handleClick = () => {
-        fetch("http://localhost:8000/film/" + id, {
-            method: "DELETE",
-        }).then(() => {
+    const handleDelete = () => {
+        console.log("removing film detail")
+        FilmDataService.remove(id).then(() => {
             history.push("/film");
         });
     };
@@ -35,7 +28,7 @@ const FilmDetail = () => {
     }
 
     return (
-        <GenericDetail DetailLayout={DetailLayout} handleModify={handleModify} handleDelete={handleClick}
+        <GenericDetail DetailLayout={DetailLayout} DetailForm={FilmForm} handleDelete={handleDelete}
                        url={"http://localhost:8080/api/film/"}/>
     );
 };
