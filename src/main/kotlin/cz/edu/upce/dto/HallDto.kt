@@ -8,7 +8,5 @@ class HallDto(
     var capacity: Int?,
     var cinema: CinemaDto?
 ) {
-    fun toModel(): Hall = Hall(
-        id, name ?: "", capacity ?: 0, cinema?.toModel()
-    )
+    fun toModel() = Hall(id, name ?: "", capacity ?: 0, cinema?.toModel())
 }

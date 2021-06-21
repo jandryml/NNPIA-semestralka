@@ -8,6 +8,7 @@ interface ITicketService {
     fun getAll(paging: Pageable): Page<Ticket>
     fun getById(id: Long): Ticket
     fun getByUserId(userId: Long, paging: Pageable): Page<Ticket>
+    fun getByProgramId(programId: Long, paging: Pageable): Page<Ticket>
     fun save(ticket: Ticket): Ticket
     fun removeById(ticketId: Long)
 }

@@ -16,7 +16,5 @@ class Cinema(
     var telephone: String = "",
     var email: String = ""
 ) {
-    fun toDto(): CinemaDto = CinemaDto(
-        id, name, address, telephone, email
-    )
+    fun toDto() = CinemaDto(id, name, address, telephone, email)
 }

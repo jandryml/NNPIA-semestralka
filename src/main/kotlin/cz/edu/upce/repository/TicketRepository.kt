@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository
 interface TicketRepository : JpaRepository<Ticket, Long> {
     @Query(value = "SELECT * FROM ticket t WHERE t.user_id = :userId", nativeQuery = true)
     fun findByUserId(userId: Long, paging: Pageable): Page<Ticket>
+
+    @Query(value = "SELECT * FROM ticket t WHERE t.program_id = :programId", nativeQuery = true)
+    fun findByProgramId(programId: Long, paging: Pageable): Page<Ticket>
 }

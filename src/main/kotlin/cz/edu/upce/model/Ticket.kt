@@ -13,9 +13,8 @@ class Ticket(
     val user: User? = null,
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "program_id")
-    val program: Program? = null
+    val program: Program? = null,
+    var isUsed: Boolean = false
 ) {
-    fun toDto(): TicketDto = TicketDto(
-        id, user?.toDto(), program?.toDto()
-    )
+    fun toDto() = TicketDto(id, user?.toDto(), program?.toDto(), isUsed)
 }

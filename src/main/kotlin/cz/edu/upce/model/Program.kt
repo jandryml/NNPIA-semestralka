@@ -22,7 +22,5 @@ class Program(
         val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
     }
 
-    fun toDto(): ProgramDto = ProgramDto(
-        id, timeStamp.format(dateTimeFormatter), hall?.toDto(), film?.toDto()
-    )
+    fun toDto() = ProgramDto(id, timeStamp.format(dateTimeFormatter), hall?.toDto(), film?.toDto())
 }

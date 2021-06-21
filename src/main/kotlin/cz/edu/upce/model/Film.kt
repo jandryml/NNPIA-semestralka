@@ -16,7 +16,5 @@ class Film(
     var durationMinute: Int = 0,
     var language: String = ""
 ) {
-    fun toDto(): FilmDto = FilmDto(
-        id, name, description, durationMinute, language
-    )
+    fun toDto() = FilmDto(id, name, description, durationMinute, language)
 }
