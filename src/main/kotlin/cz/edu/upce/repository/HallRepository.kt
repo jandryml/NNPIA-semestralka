@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface HallRepository : JpaRepository<Hall, Long> {
+    @Query(value = "SELECT * FROM hall h WHERE h.cinema_id = :cinemaId", nativeQuery = true)
     fun findByCinemaId(@Param("cinemaId") cinemaId: Long, paging: Pageable): Page<Hall>
 }

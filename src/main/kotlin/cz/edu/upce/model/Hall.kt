@@ -6,7 +6,7 @@ import javax.persistence.*
 @Entity(name = "hall")
 class Hall(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     var name: String = "",
     var capacity: Int = 0,

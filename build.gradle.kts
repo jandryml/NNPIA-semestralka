@@ -8,6 +8,7 @@ plugins {
     id("com.github.node-gradle.node") version "2.2.2"
     kotlin("jvm") version "1.3.71"
     kotlin("plugin.spring") version "1.3.71"
+
 }
 
 group = "cz.edu.upce"
@@ -40,6 +41,8 @@ dependencies {
 
     implementation("org.postgresql:postgresql")
     implementation("com.h2database:h2")
+
+    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")

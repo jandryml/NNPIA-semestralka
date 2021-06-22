@@ -9,7 +9,7 @@ import javax.persistence.Id
 @Entity(name = "film")
 class Film(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     var name: String = "",
     var description: String = "",

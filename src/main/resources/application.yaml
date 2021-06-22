@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: develop
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+nnpia:
+  app:
+    jwtSecret: mySecretKey
+    jwtExpirationMs: 86400000
+
+---
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: password
+  config:
+    activate:
+      on-profile: develop
+---
+spring:
+  jpa:
+    database: h2
+  datasource:
+    url: jdbc:h2:mem:testdb
+  config:
+    activate:
+      on-profile: test
+---
+
+

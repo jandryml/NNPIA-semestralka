@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity(name = "program")
 class Program(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     @Column(columnDefinition = "TIMESTAMP") var timeStamp: LocalDateTime = LocalDateTime.now(),
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
