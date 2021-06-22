@@ -4,7 +4,7 @@ import GenericList from "../reusables/GenericList";
 const TicketProfileView = ({id}) => {
     return (
         <GenericList title="Your tickets" ListItem={TicketProfileListItem}
-                     url={'http://localhost:8080/api/ticket?userId=' + id}/>
+                     url={process.env.REACT_APP_SERVER_URL + '/ticket?userId=' + id}/>
     );
 };
 

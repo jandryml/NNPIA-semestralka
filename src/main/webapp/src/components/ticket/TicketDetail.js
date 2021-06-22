@@ -30,7 +30,7 @@ const TicketDetail = () => {
 
     return (
         <GenericDetail DetailLayout={DetailLayout} handleDelete={handleDelete} modifiable={false} deletableByUser={true}
-                       url={"http://localhost:8080/api/ticket/"}/>
+                       url={process.env.REACT_APP_SERVER_URL + "/ticket/"}/>
     );
 };
 

@@ -7,7 +7,7 @@ const TicketProgramView = () => {
 
     return (
         <GenericList title="Ticket List for Program" ListItem={TicketProgramListItem}
-                     url={'http://localhost:8080/api/ticket?programId=' + id}/>
+                     url={process.env.REACT_APP_SERVER_URL + '/ticket?programId=' + id}/>
     );
 };
 

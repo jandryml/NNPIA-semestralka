@@ -5,6 +5,7 @@ import cz.edu.upce.service.IProgramService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -59,11 +60,13 @@ class ProgramController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun save(@RequestBody programDto: ProgramDto): ProgramDto {
         return programService.save(programDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun delete(@PathVariable id: Long) {
         return programService.removeById(id)
     }

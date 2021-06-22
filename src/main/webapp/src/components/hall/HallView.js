@@ -13,7 +13,7 @@ const HallView = ({parent: cinema}) => {
 
     return (
         <div>
-            <GenericList title={"All halls of cinema: " + cinema.name} ListItem={HallListItem} url={'http://localhost:8080/api/hall?cinemaId=' + cinema.id} parentId={cinema.id}/>
+            <GenericList title={"All halls of cinema: " + cinema.name} ListItem={HallListItem} url={process.env.REACT_APP_SERVER_URL + '/hall?cinemaId=' + cinema.id} parentId={cinema.id}/>
             {isAdmin && <button onClick={handleClick}>Add Hall</button>}
         </div>
 

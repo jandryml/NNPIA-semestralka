@@ -10,7 +10,7 @@ import useRoles from "../../hooks/useRoles";
 
 const ProgramView = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const [url, setUrl] = useState('http://localhost:8080/api/program?date=' + moment(startDate).format("L"));
+    const [url, setUrl] = useState(process.env.REACT_APP_SERVER_URL + '/program?date=' + moment(startDate).format("L"));
     const history = useHistory();
 
     const {isAdmin} = useRoles();
@@ -23,7 +23,7 @@ const ProgramView = () => {
     ));
 
     useEffect(() => {
-        setUrl('http://localhost:8080/api/program?date=' + moment(startDate).format("L"))
+        setUrl(process.env.REACT_APP_SERVER_URL + '/program?date=' + moment(startDate).format("L"))
     }, [startDate]);
 
     function handleClick() {

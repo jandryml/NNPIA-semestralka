@@ -10,7 +10,7 @@ const useRoles = () => {
         const user = AuthService.getCurrentUser();
 
         if (user) {
-            setIsUser(user);
+            setIsUser(user.roles.includes("ROLE_USER"));
             setIsAdmin(user.roles.includes("ROLE_ADMIN"));
             setIsModerator(user.roles.includes("ROLE_MODERATOR"));
         }

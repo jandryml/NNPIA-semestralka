@@ -13,7 +13,7 @@ const FilmView = () => {
 
     return (
         <div>
-            <GenericList title="All Films" ListItem={FilmListItem} url={'http://localhost:8080/api/film'}/>
+            <GenericList title="All Films" ListItem={FilmListItem} url={process.env.REACT_APP_SERVER_URL + '/film'}/>
             {isAdmin && <button onClick={handleClick}>Add film</button>}
         </div>
     );

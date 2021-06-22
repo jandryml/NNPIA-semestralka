@@ -25,7 +25,7 @@ const HallDetail = () => {
 
     return (
         <GenericDetail DetailLayout={DetailLayout} DetailForm={HallForm} handleDelete={handleDelete}
-                       url={"http://localhost:8080/api/hall/"}/>
+                       url={process.env.REACT_APP_SERVER_URL + "/hall/"}/>
     );
 };
 

@@ -28,7 +28,7 @@ const FilmDetail = () => {
 
     return (
         <GenericDetail DetailLayout={DetailLayout} DetailForm={FilmForm} handleDelete={handleDelete}
-                       url={"http://localhost:8080/api/film/"}/>
+                       url={process.env.REACT_APP_SERVER_URL + "/film/"}/>
     );
 };
 

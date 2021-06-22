@@ -5,6 +5,7 @@ import cz.edu.upce.service.ITicketService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -46,11 +47,13 @@ class TicketController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun save(@RequestBody ticketDto: TicketDto): TicketDto {
         return ticketService.save(ticketDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun delete(@PathVariable id: Long) {
         return ticketService.removeById(id)
     }

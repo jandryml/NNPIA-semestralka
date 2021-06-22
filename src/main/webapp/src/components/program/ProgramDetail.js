@@ -59,7 +59,7 @@ const ProgramDetail = () => {
 
     return (
         <GenericDetail DetailLayout={DetailLayout} handleDelete={handleDelete} modifiable={false} deletable={submitted}
-                       url={"http://localhost:8080/api/program/"}/>
+                       url={process.env.REACT_APP_SERVER_URL + "/program/"}/>
     );
 };
 

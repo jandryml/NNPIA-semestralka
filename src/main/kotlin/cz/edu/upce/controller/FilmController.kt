@@ -5,6 +5,7 @@ import cz.edu.upce.service.IFilmService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -27,11 +28,13 @@ class FilmController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun save(@RequestBody filmDto: FilmDto): FilmDto {
         return filmService.save(filmDto.toModel()).toDto()
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     fun delete(@PathVariable id: Long) {
         return filmService.removeById(id)
     }

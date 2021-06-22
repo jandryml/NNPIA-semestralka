@@ -1,10 +1,12 @@
 package cz.edu.upce.security.jwt
 
+import cz.edu.upce.model.RoleType
 import cz.edu.upce.security.service.UserDetailsImpl
 import io.jsonwebtoken.*
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -26,6 +28,15 @@ class JwtUtils {
 
     fun getUserNameFromJwtToken(token: String?): String {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).body.subject
+    }
+
+    fun currentUserContainsRole(roleType: RoleType): Boolean {
+        val userDetails = (SecurityContextHolder.getContext().authentication.principal as UserDetailsImpl)
+        return userDetails.authorities.map { it.authority }.contains(roleType.toString())
+    }
+
+    fun getUserId(): Long {
+        return (SecurityContextHolder.getContext().authentication.principal as UserDetailsImpl).id
     }
 
     fun validateJwtToken(authToken: String?): Boolean {

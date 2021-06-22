@@ -29,7 +29,7 @@ const CinemaDetail = () => {
 
     return (
         <GenericDetail DetailLayout={DetailLayout} DetailForm={CinemaForm} AdditionalLayout={HallView} handleDelete={handleDelete}
-                       url={"http://localhost:8080/api/cinema/"}/>
+                       url={process.env.REACT_APP_SERVER_URL + "/cinema/"}/>
     );
 };
 

@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import {useState} from "react";
 import useRoles from "../../hooks/useRoles";
 
-const GenericDetail = ({DetailLayout, AdditionalLayout, DetailForm, handleDelete, url, modifiable = true}, deletableByUser=false) => {
+const GenericDetail = ({DetailLayout, AdditionalLayout, DetailForm, handleDelete, url, modifiable = true, deletableByUser= false}) => {
     const {id} = useParams();
     const history = useHistory()
     const {data, error, isPending} = useFetch(url + id);
