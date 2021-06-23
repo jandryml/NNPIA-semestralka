@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit
 
 @ExperimentalStdlibApi
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Import(Creator::class)
 class SeleniumTest
 @Autowired constructor(
