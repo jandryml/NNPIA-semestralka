@@ -20,10 +20,12 @@ const findByTitle = title => {
     return http.get(`/tutorials?title=${title}`);
 };
 
-export default {
+const exportedObject = {
     getAll,
     get,
     save,
     remove,
     findByTitle
 };
+
+export default exportedObject;

@@ -20,10 +20,12 @@ const findByCinemaId = cinemaId => {
     return http.get(`/hall?cinemaId=${cinemaId}`);
 };
 
-export default {
+const exportedObject = {
     getAll,
     get,
     save,
     remove,
     findByCinemaId
 };
+
+export default exportedObject;

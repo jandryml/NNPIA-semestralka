@@ -23,7 +23,6 @@ import org.springframework.test.context.ActiveProfiles
 @ExperimentalStdlibApi
 class HallServiceTest
 @Autowired constructor(
-    private val creator: Creator,
     private val hallService: HallService,
     private val cinemaService: CinemaService,
     private val hallRepository: HallRepository,
@@ -44,10 +43,9 @@ class HallServiceTest
 
     @Test
     fun addHall() {
-        val cinema = Cinema(name = "New cinema")
-        val hall = Hall(name = "New hall", cinema = cinema)
+        val cinema = cinemaService.save(Cinema(name = "New cinema"))
+        val hall = hallService.save(Hall(name = "New hall", cinema = cinema))
 
-        creator.save(hall)
 
         val halls = hallService.getAll(Pageable.unpaged())
         Assertions.assertEquals(1, halls.size)

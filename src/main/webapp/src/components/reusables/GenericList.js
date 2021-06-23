@@ -6,25 +6,14 @@ const GenericList = ({url, title, ListItem, parentId}) => {
     // let {data, error, isPending} = useFetch(url);
     const [data, setData] = useState([]);
 
-    const [filterValue, setFilterValue] = useState("");
-
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(0);
     const [pageSize, setPageSize] = useState(5);
 
     const pageSizes = [5, 10, 25];
 
-    const onChangeFilterValue = (e) => {
-        const filterValue = e.target.value;
-        setFilterValue(filterValue);
-    };
-
-    const getRequestParams = (filterValue, page, pageSize) => {
+    const getRequestParams = (page, pageSize) => {
         let params = {};
-
-        if (filterValue) {
-            params["filterValue"] = filterValue;
-        }
 
         if (page) {
             params["page"] = page - 1;
@@ -38,7 +27,7 @@ const GenericList = ({url, title, ListItem, parentId}) => {
     };
 
     const retrieveData = () => {
-        const params = getRequestParams(filterValue, page, pageSize);
+        const params = getRequestParams(page, pageSize);
         console.log("getting data");
 
         axios.create().get(url, {params})

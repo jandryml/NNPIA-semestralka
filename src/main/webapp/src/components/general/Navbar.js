@@ -3,8 +3,7 @@ import React, {useEffect, useState} from "react";
 import AuthService from "../../services/auth/auth.service";
 
 const Navbar = () => {
-    const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-    const [showAdminBoard, setShowAdminBoard] = useState(false);
+;
     const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
@@ -12,8 +11,7 @@ const Navbar = () => {
 
         if (user) {
             setCurrentUser(user);
-            setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
-            setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
+
         }
     }, []);
 
@@ -51,35 +49,12 @@ const Navbar = () => {
                     </Link>
                 </li>
 
-                {/*{showAdminBoard && (*/}
-                {/*    <li className="nav-item">*/}
-                {/*        <Link to={"/admin"} className="nav-link">*/}
-                {/*            Admin Board*/}
-                {/*        </Link>*/}
-                {/*    </li>*/}
-                {/*)}*/}
-
-                {/*{showModeratorBoard && (*/}
-                {/*    <li className="nav-item">*/}
-                {/*        <Link to={"/mod"} className="nav-link">*/}
-                {/*            Moderator Board*/}
-                {/*        </Link>*/}
-                {/*    </li>*/}
-                {/*)}*/}
-
-                {/*{currentUser && (*/}
-                {/*    <li className="nav-item">*/}
-                {/*        <Link to={"/user"} className="nav-link">*/}
-                {/*            User*/}
-                {/*        </Link>*/}
-                {/*    </li>*/}
-                {/*)}*/}
             </div>
 
             {currentUser ? (
                 <div className="navbar-nav ml-auto">
                     <li className="nav-item">
-                        <Link to={"/profile"} className="nav-link">
+                        <Link to={"/profile"} className="nav-link" id="profileLink">
                             {currentUser.username}
                         </Link>
                     </li>
@@ -92,13 +67,13 @@ const Navbar = () => {
             ) : (
                 <div className="navbar-nav ml-auto">
                     <li className="nav-item">
-                        <Link to={"/login"} className="nav-link">
+                        <Link to={"/login"} className="nav-link" id="loginLink">
                             Login
                         </Link>
                     </li>
 
                     <li className="nav-item">
-                        <Link to={"/register"} className="nav-link">
+                        <Link to={"/register"} className="nav-link" >
                             Sign Up
                         </Link>
                     </li>

@@ -76,6 +76,7 @@ const Login = (props) => {
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
                         <Input
+                            id="username"
                             type="text"
                             className="form-control"
                             name="username"
@@ -88,6 +89,7 @@ const Login = (props) => {
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
                         <Input
+                            id="password"
                             type="password"
                             className="form-control"
                             name="password"
@@ -98,7 +100,7 @@ const Login = (props) => {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block" disabled={loading}>
+                        <button id="loginButton" className="btn btn-primary btn-block" disabled={loading}>
                             {loading && (
                                 <span className="spinner-border spinner-border-sm"></span>
                             )}

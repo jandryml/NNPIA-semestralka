@@ -61,15 +61,12 @@ class ProgramServiceTest
 
     @Test
     fun searchByCinemaId() {
-        val cinema = Cinema(name = "New cinema")
-        val hall = Hall(name = "New hall", cinema = cinema)
-        val film1 = Film(name = "Pan prstenu")
-        val film2 = Film(name = "Pan prstenus")
-        val program1 = Program(hall = hall, film = film1, timeStamp = LocalDateTime.now())
-        val program2 = Program(hall = hall, film = film2, timeStamp = LocalDateTime.now())
-
-        creator.save(program1)
-        creator.save(program2)
+        val cinema = cinemaService.save(Cinema(name = "New cinema"))
+        val hall = hallService.save(Hall(name = "New hall", cinema = cinema))
+        val film1 = filmService.save(Film(name = "Pan prstenu"))
+        val film2 = filmService.save(Film(name = "Pan prstenus"))
+        val program1 = programService.save(Program(hall = hall, film = film1, timeStamp = LocalDateTime.now()))
+        val program2 = programService.save(Program(hall = hall, film = film2, timeStamp = LocalDateTime.now()))
 
         val programs = programRepository.findByFilmId(film1.id!!, Pageable.unpaged())
 

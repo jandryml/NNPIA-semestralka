@@ -38,7 +38,7 @@ const ProgramForm = ({input: inputProgram}) => {
 
     useEffect(() => {
         FilmDataService.getAll({size: 99}).then((response) => {
-            const {content: newData, totalPages} = response.data;
+            const {content: newData} = response.data;
             setFilms(newData);
             setFilm(newData[0].id);
         }).catch((e) => {
@@ -46,7 +46,7 @@ const ProgramForm = ({input: inputProgram}) => {
         });
 
         HallDataService.getAll({size: 99}).then((response) => {
-            const {content: newData, totalPages} = response.data;
+            const {content: newData} = response.data;
             setHalls(newData);
             setHall(newData[0].id);
 

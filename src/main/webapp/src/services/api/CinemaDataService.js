@@ -16,9 +16,11 @@ const remove = id => {
     return http.delete(`/cinema/${id}`);
 };
 
-export default {
+const exportedObject = {
     getAll,
     get,
     save,
     remove
 };
+
+export default exportedObject;
