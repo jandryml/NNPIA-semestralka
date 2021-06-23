@@ -1,7 +1,12 @@
 package cz.edu.upce.selenium
 
 import cz.edu.upce.Creator
+import cz.edu.upce.controller.auth.AuthController
+import cz.edu.upce.model.Role
+import cz.edu.upce.model.RoleType
 import cz.edu.upce.model.User
+import cz.edu.upce.repository.RoleRepository
+import cz.edu.upce.repository.UserRepository
 import cz.upce.eshop.ui.TestImplementation
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -16,6 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.test.context.ActiveProfiles
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -24,8 +30,11 @@ import java.io.File
 @ExperimentalStdlibApi
 class SeleniumTest
 @Autowired constructor(
-    private val creator: Creator
-    ) {
+    private val creator: Creator,
+    private val userRepository: UserRepository,
+    private val roleRepository: RoleRepository,
+    private val authController: AuthController
+) {
 
     private lateinit var driver: WebDriver
     private lateinit var wait: WebDriverWait
@@ -53,7 +62,6 @@ class SeleniumTest
         val chromeOptions = ChromeOptions()
         chromeOptions.setHeadless(true)
         driver = ChromeDriver(chromeOptions)
-//        applicationUserRepository.deleteAll()
         wait = WebDriverWait(driver, 10)
     }
 
@@ -68,39 +76,38 @@ class SeleniumTest
         return "https://nnpia-semestralka.herokuapp.com"
     }
 
-
     @Test
     fun loginSuccess() {
-        val user = User(username= "Test", email= "test@gmail.com", password="password")
+        val user = User(username = "Test", email = "test@gmail.com", password = "password")
+
         creator.save(user)
 
-        driver?.get(getOrigin())
-        driver?.findElement(By.id("loginLink"))?.click()
+        driver.get(getOrigin())
+        driver.findElement(By.id("loginLink"))?.click()
 
-        driver?.findElement(By.id("username"))?.sendKeys("Test")
-        driver?.findElement(By.id("password"))?.sendKeys("password")
-        driver?.findElement(By.xpath("//button[@id='loginButton']"))?.click()
+        driver.findElement(By.id("username"))?.sendKeys("Test")
+        driver.findElement(By.id("password"))?.sendKeys("password")
+        driver.findElement(By.xpath("//button[@id='loginButton']"))?.click()
 
-        driver?.get(getOrigin())
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS); driver.get(getOrigin());
 
-        wait.until(ExpectedConditions.urlContains(getOrigin()))
-
-        assertEquals(
-            1,
-            driver?.findElements(By.xpath("//h1[text()='Welcome to measurement statistics react application !']"))?.size
-        )
+        assertEquals(0, driver.findElements(By.id("errorMessage"))?.size)
     }
-//
-//    @Test
-//    fun loginFailed() {
-//        val user = personalMockGenerator.createPersonal()
-//        creator.save(user.toEntityClass())
-//
-//        driver?.get(getOrigin())
-//        driver?.findElement(By.id("userName"))?.sendKeys("admin")
-//        driver?.findElement(By.id("password"))?.sendKeys("0000")
-//        driver?.findElement(By.xpath("//button[@id='buttonSubmit']"))?.click()
-//
-//        Assert.assertEquals(1, driver?.findElements(By.xpath("//button[@id='buttonSubmit']"))?.size)
-//    }
+
+    @Test
+    fun loginFailed() {
+        val user = User(username = "Test2", email = "tes2t@gmail.com", password = "password")
+        creator.save(user)
+
+        driver.get(getOrigin())
+        driver.findElement(By.id("loginLink"))?.click()
+
+        driver.findElement(By.id("username"))?.sendKeys("asdasd")
+        driver.findElement(By.id("password"))?.sendKeys("afdfs")
+        driver.findElement(By.xpath("//button[@id='loginButton']"))?.click()
+
+//        wait.until(ExpectedConditions.urlContains(getOrigin() + "/login"))
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        assertEquals(1, driver.findElements(By.id("errorMessage"))?.size)
+    }
 }
