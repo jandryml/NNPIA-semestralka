@@ -115,6 +115,7 @@ const Register = (props) => {
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                 <Input
+                                    id ="username"
                                     type="text"
                                     className="form-control"
                                     name="username"
@@ -127,6 +128,7 @@ const Register = (props) => {
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
                                 <Input
+                                    id ="email"
                                     type="text"
                                     className="form-control"
                                     name="email"
@@ -139,6 +141,7 @@ const Register = (props) => {
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
                                 <Input
+                                    id ="password"
                                     type="password"
                                     className="form-control"
                                     name="password"
@@ -149,7 +152,7 @@ const Register = (props) => {
                             </div>
 
                             <div className="form-group">
-                                <button className="btn btn-primary btn-block">Sign Up</button>
+                                <button className="btn btn-primary btn-block" id="registerButton">Sign Up</button>
                             </div>
                         </div>
                     )}
@@ -159,6 +162,7 @@ const Register = (props) => {
                             <div
                                 className={ successful ? "alert alert-success" : "alert alert-danger" }
                                 role="alert"
+                                id="registerAlert"
                             >
                                 {message}
                             </div>

@@ -1,12 +1,7 @@
 package cz.edu.upce.selenium
 
 import cz.edu.upce.Creator
-import cz.edu.upce.controller.auth.AuthController
-import cz.edu.upce.model.Role
-import cz.edu.upce.model.RoleType
 import cz.edu.upce.model.User
-import cz.edu.upce.repository.RoleRepository
-import cz.edu.upce.repository.UserRepository
 import cz.upce.eshop.ui.TestImplementation
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -14,7 +9,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -23,14 +17,14 @@ import org.springframework.test.context.ActiveProfiles
 import java.io.File
 import java.util.concurrent.TimeUnit
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExperimentalStdlibApi
+@ComponentScan
 class SeleniumTest
 @Autowired constructor(
-    private val creator: Creator,
-    private val userRepository: UserRepository,
-    private val roleRepository: RoleRepository,
-    private val authController: AuthController
+    private val creator: Creator
 ) {
 
     private lateinit var driver: WebDriver

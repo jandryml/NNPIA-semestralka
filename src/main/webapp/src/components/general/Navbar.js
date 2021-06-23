@@ -73,7 +73,7 @@ const Navbar = () => {
                     </li>
 
                     <li className="nav-item">
-                        <Link to={"/register"} className="nav-link" >
+                        <Link to={"/register"} className="nav-link" id="registerLink" >
                             Sign Up
                         </Link>
                     </li>
