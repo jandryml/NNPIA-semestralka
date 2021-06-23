@@ -110,7 +110,7 @@ const Login = (props) => {
 
                     {message && (
                         <div className="form-group">
-                            <div className="alert alert-danger" role="alert">
+                            <div className="alert alert-danger" role="alert" id="errorMessage">
                                 {message}
                             </div>
                         </div>
