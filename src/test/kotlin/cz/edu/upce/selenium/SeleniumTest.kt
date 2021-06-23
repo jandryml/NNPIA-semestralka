@@ -23,10 +23,7 @@ import org.springframework.test.context.ActiveProfiles
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@ActiveProfiles("test")
-@ComponentScan
 @ExperimentalStdlibApi
 class SeleniumTest
 @Autowired constructor(
@@ -106,7 +103,6 @@ class SeleniumTest
         driver.findElement(By.id("password"))?.sendKeys("afdfs")
         driver.findElement(By.xpath("//button[@id='loginButton']"))?.click()
 
-//        wait.until(ExpectedConditions.urlContains(getOrigin() + "/login"))
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         assertEquals(1, driver.findElements(By.id("errorMessage"))?.size)
     }
