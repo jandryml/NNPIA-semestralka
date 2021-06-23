@@ -12,16 +12,13 @@ import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.ComponentScan
-import org.springframework.test.context.ActiveProfiles
+import org.springframework.context.annotation.Import
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@ActiveProfiles("test")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExperimentalStdlibApi
-@ComponentScan
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@Import(Creator::class)
 class SeleniumTest
 @Autowired constructor(
     private val creator: Creator
@@ -66,6 +63,23 @@ class SeleniumTest
     fun getOrigin(): String {
         return "https://nnpia-semestralka.herokuapp.com"
     }
+
+    @Test
+    fun registerTest() {
+
+        driver.get(getOrigin())
+        driver.findElement(By.id("registerLink"))?.click()
+
+        driver.findElement(By.id("username"))?.sendKeys("Testin1")
+        driver.findElement(By.id("email"))?.sendKeys("testing@gmaila.com")
+        driver.findElement(By.id("password"))?.sendKeys("password")
+        driver.findElement(By.xpath("//button[@id='registerButton']"))?.click()
+
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        assertEquals(1, driver.findElements(By.id("registerAlert"))?.size)
+    }
+
+
 
     @Test
     fun loginSuccess() {
