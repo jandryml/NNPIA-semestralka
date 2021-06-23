@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
+import org.springframework.test.context.ActiveProfiles
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Import(Creator::class)
+@ActiveProfiles("test")
 class SeleniumTest
 @Autowired constructor(
     private val creator: Creator
