@@ -54,7 +54,6 @@ const App = () => {
 
                         <Route exact path="/program/revision/:id" component={TicketProgramView}/>
 
-
                         <Route exact path="/ticket/:id" component={TicketDetail}/>
 
                         <Route exact path="/user" component={BoardUser}/>
